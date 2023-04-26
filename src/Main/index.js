@@ -1,12 +1,13 @@
-import { Container, TasksContainer } from './styles';
+import { Container, TasksContainer } from "./styles";
 
-import Header from '../components/Header';
-import Tasks from '../components/Tasks';
-import AddButton from '../components/AddButton';
+import AddButton from "../components/AddButton";
+import Header from "../components/Header";
+import Tasks from "../components/Tasks";
 
-import { tasks } from '../mocks/tasks';
-import DeleteConfirmModal from '../components/DeleteConfirmModal';
-import { useState } from 'react';
+import { useState } from "react";
+import DeleteConfirmModal from "../components/DeleteConfirmModal";
+import NewTaskModal from "../components/NewTaskModal";
+import { tasks } from "../mocks/tasks";
 
 export default function Main() {
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
@@ -24,10 +25,7 @@ export default function Main() {
       <Header />
 
       <TasksContainer>
-        <Tasks
-          onDelete={handleDeleteTask}
-          tasks={tasks}
-        />
+        <Tasks onDelete={handleDeleteTask} tasks={tasks} />
       </TasksContainer>
 
       <AddButton onPress={() => alert("Chamar modal de criação de tarefa")} />
@@ -37,6 +35,7 @@ export default function Main() {
         onClose={() => setIsDeleteModalVisible(false)}
         onConfirm={handleConfirmDeleteTask}
       />
+      <NewTaskModal visible={true} onclose={() => alert("Fechar")} />
     </Container>
   );
 }

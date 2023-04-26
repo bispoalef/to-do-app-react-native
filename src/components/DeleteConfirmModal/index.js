@@ -1,23 +1,18 @@
-import { Modal } from 'react-native';
 
 import { Text } from '../Text';
 
-import { Overlay, ModalBody, Actions } from './styles';
+import { Actions } from './styles';
 
 import Button from '../Button';
+import CustomModal from '../CustomModal';
 
 export default function DeleteConfirmModal({ visible, onClose, onConfirm }) {
   return (
-    <Modal
-      visible={visible}
-      transparent
-      statusBarTranslucent
-      animationType="fade"
-      onRequestClose={onClose}
-    >
-      <Overlay>
-        <ModalBody>
-          <Text
+ <CustomModal>
+
+  visible = {visible};
+  onClose = {onClose};
+  <Text
             size={18}
             weight="600"
           >
@@ -31,8 +26,6 @@ export default function DeleteConfirmModal({ visible, onClose, onConfirm }) {
             <Button primary={false} onPress={onClose}>Cancelar</Button>
             <Button onPress={onConfirm}>Confirmar</Button>
           </Actions>
-        </ModalBody>
-      </Overlay>
-    </Modal >
+ </CustomModal>
   );
 }
